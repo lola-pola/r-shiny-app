@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: r-shiny-app
+spec:
+  selector:
+    matchLabels:
+      run: r-shiny-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: r-shiny-app
+    spec:
+      containers:
+      - name: r-shiny-app
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 3838
