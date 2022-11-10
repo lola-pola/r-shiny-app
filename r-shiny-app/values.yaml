@@ -8,7 +8,7 @@ image:
   repository: elhaysteva.azurecr.io/r-shiny-app
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 1
+  tag: 2
 
 
 imagePullSecrets: []
