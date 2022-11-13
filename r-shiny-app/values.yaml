@@ -4,6 +4,8 @@
 
 replicaCount: 1
 
+
+
 image:
   repository: elhaysteva.azurecr.io/r-shiny-app
   pullPolicy: Always
@@ -14,6 +16,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -38,11 +41,11 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+  type: LoadBalancer
+  port: 3838
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
