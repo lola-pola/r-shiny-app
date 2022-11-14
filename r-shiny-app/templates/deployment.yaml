@@ -2,27 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "r-shiny-app.fullname" . }}
-  labels:
-    {{- include "r-shiny-app.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
+  replicas: 1
   selector:
     matchLabels:
-      {{- include "r-shiny-app.selectorLabels" . | nindent 6 }}
+      app: {{ include "r-shiny-app.fullname" . }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
-        {{- include "r-shiny-app.selectorLabels" . | nindent 8 }}
+        app: {{ include "r-shiny-app.fullname" . }}
     spec:
       containers:
       - name: {{ include "r-shiny-app.fullname" . }}
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - containerPort: 80

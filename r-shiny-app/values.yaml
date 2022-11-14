@@ -3,14 +3,14 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-
+  
 
 
 image:
-  repository: elhaysteva.azurecr.io/r-shiny-app
+  repository: tevaprivatedemo.azurecr.io/r-shiny-app
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 2
+  tag: 4
 
 
 imagePullSecrets: []
@@ -42,7 +42,7 @@ securityContext: {}
 
 service:
   type: LoadBalancer
-  port: 3838
+  port: 80
 
 ingress:
   enabled: true
