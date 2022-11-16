@@ -1,6 +1,5 @@
 # R Shiny App on AKS 
 
-#![r-shiny-app](https://github.com/lola-pola/r-shiny-app/actions/workflows/r-shiny-app.yaml/badge.svg)
 
 <details>
   <summary>Click to see the - diagram</summary>
