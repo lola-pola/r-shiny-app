@@ -8,14 +8,12 @@
     
 ```mermaid
 graph TD;
-    users-->r-shiny-app;
-    r-shiny-app-->app-a;
-    r-shiny-app-->app-b;
-    r-shiny-app-->app-c;
-    app-a-->k8s-pod-a;
-    app-b-->k8s-pod-b;
-    app-c-->k8s-pod-c;
+    user-->r-shiny-app;
+    r-shiny-app-->k8s-pod-r-shiny-app;
 ```
+
+you can deploy 1 per user for demo etc.. reduce complexity 
+
 </details>
     
 ## Demo 
