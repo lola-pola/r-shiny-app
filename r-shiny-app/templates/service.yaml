@@ -1,10 +1,25 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
   name: {{ include "r-shiny-app.fullname" . }}
 spec:
-  type: ClusterIP
-  ports:
-  - port: 80
+  type: LoadBalancer
   selector:
-    app: {{ include "r-shiny-app.fullname" . }}
+    run: {{ include "r-shiny-app.fullname" . }}
+  ports:
+  - protocol: TCP
+    port: {{ .Values.service.port }}
+    targetPort:  {{ .Values.service.containerPort }}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ include "r-shiny-app.fullname" . }}-np
+spec:
+  type: NodePort
+  selector:
+    run: {{ include "r-shiny-app.fullname" . }}
+  ports:
+  - protocol: TCP
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.containerPort }}

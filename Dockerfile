@@ -24,8 +24,8 @@ RUN R -e 'install.packages(c(\
 
 
 # copy the app directory into the image
-COPY ./shiny-app/* /srv/shiny-server/
-COPY ./shiny-app/shiny-server.conf /etc/shiny-server/shiny-server.conf
+COPY . /srv/shiny-server/
+# COPY ./shiny-app/shiny-server.conf /etc/shiny-server/shiny-server.conf
 # run app
-EXPOSE 80
+EXPOSE 3838
 CMD ["/usr/bin/shiny-server"]

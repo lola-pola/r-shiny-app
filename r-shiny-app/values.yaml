@@ -10,7 +10,7 @@ image:
   repository: tevaprivatedemo.azurecr.io/r-shiny-app
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 4
+  tag: 1
 
 
 imagePullSecrets: []
@@ -43,6 +43,7 @@ securityContext: {}
 service:
   type: LoadBalancer
   port: 80
+  containerPort: 3838
 
 ingress:
   enabled: true
